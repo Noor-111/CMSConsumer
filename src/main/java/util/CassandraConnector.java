@@ -1,29 +1,27 @@
 package util;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 
-/**
- * Created on 22-Dec-17.
- */
-public class CassandraConnector
-{
-    private Cluster cluster;
-    private Session session;
+import java.net.InetSocketAddress;
 
-    public void connect(final String node, final int port)
-    {
-        this.cluster = Cluster.builder()
-                .addContactPoint(node).withPort(port).build();
-        session = cluster.connect();
+public class CassandraConnector {
+
+    private CqlSession session;
+
+    public void connect(String node, Integer port, String dataCenter) {
+        CqlSessionBuilder builder = CqlSession.builder();
+        builder.addContactPoint(new InetSocketAddress(node, port));
+        builder.withLocalDatacenter(dataCenter);
+
+        session = builder.build();
     }
-    public Session getSession()
-    {
+
+    public CqlSession getSession() {
         return this.session;
     }
 
-    public void close()
-    {
-        cluster.close();
+    public void close() {
+        session.close();
     }
 }
