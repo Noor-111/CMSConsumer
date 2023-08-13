@@ -31,12 +31,10 @@ dependencies {
     implementation 'org.apache.avro:avro-tools:1.11.0'
     implementation 'io.confluent:kafka-avro-serializer:6.0.0'
     implementation 'org.slf4j:slf4j-log4j12:2.0.5'
+    implementation 'com.mysql:mysql-connector-j:8.0.32'
     implementation 'com.datastax.oss:java-driver-core:4.1.0'
     implementation 'com.datastax.oss:java-driver-query-builder:4.1.0'
     implementation 'io.netty:netty-transport:4.1.71.Final'
-//    implementation 'io.netty:netty-codec:4.1.71.Final'
-//    implementation 'io.netty:netty-handler:4.1.71.Final'
-    //implementation 'io.netty:netty-tcnative-classes:4.1.71.Final'
 }
 
 //configurations.all {
